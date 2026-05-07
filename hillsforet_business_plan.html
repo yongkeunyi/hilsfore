@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>힐스포레 치유관광시설업 사업계획서 — K-MediWell 프로젝트팀</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --ink:       #1a1e14;
+  --forest:    #1f3a27;
+  --moss:      #2e5c3e;
+  --sage:      #4a7c5a;
+  --fern:      #6b9e78;
+  --mist:      #b4cdb8;
+  --cream:     #f6f3ec;
+  --paper:     #faf8f4;
+  --gold:      #b8943c;
+  --gold-lt:   #d4b060;
+  --gold-pale: #f0e0b0;
+  --earth:     #7a5c3a;
+  --gray:      #5a6070;
+  --rule:      #d8d0c4;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:'Noto Sans KR', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.85;
+  font-size: 15px;
+}
+
+/* ─── COVER ─── */
+.cover {
+  min-height: 100vh;
+  background: var(--forest);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* animated background rings */
+.cover::before {
+  content:'';
+  position:absolute;
+  top:50%; left:55%;
+  transform:translate(-50%,-50%);
+  width:700px; height:700px;
+  border-radius:50%;
+  border:1px solid rgba(184,148,60,.15);
+  animation: breathe 6s ease-in-out infinite;
+}
+.cover::after {
+  content:'';
+  position:absolute;
+  top:50%; left:55%;
+  transform:translate(-50%,-50%);
+  width:900px; height:900px;
+  border-radius:50%;
+  border:1px solid rgba(184,148,60,.08);
+  animation: breathe 6s ease-in-out infinite 1.5s;
+}
+@keyframes breathe {
+  0%,100% { transform:translate(-50%,-50%) scale(1); opacity:.6; }
+  50%      { transform:translate(-50%,-50%) scale(1.04); opacity:1; }
+}
+
+.cover-inner {
+  position:relative; z-index:2;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  padding:0;
+}
+
+/* top band */
+.cover-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding:40px 60px 0;
+  border-bottom:1px solid rgba(184,148,60,.25);
+  padding-bottom:24px;
+}
+
+.cover-knu {
+  font-size:.78rem;
+  color: var(--mist);
+  line-height:1.6;
+  letter-spacing:.04em;
+}
+.cover-knu strong { color:var(--gold-lt); display:block; font-size:.85rem; }
+
+.cover-doc-id {
+  font-size:.72rem;
+  color:rgba(255,255,255,.4);
+  text-align:right;
+  letter-spacing:.08em;
+}
+
+/* main content */
+.cover-main {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:60px 60px 40px;
+}
+
+.cover-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--gold);
+  color:var(--gold-lt);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  padding:7px 20px;
+  border-radius:2px;
+  margin-bottom:32px;
+  width:fit-content;
+  animation: fadeUp .8s ease both;
+}
+
+.cover-title-jp {
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  font-size:1rem;
+  color:rgba(180,205,184,.5);
+  letter-spacing:.12em;
+  margin-bottom:12px;
+  animation: fadeUp .8s ease .1s both;
+}
+
+.cover-h1 {
+  font-family:'Noto Serif KR', serif;
+  font-size:3.2rem;
+  font-weight:900;
+  color:#fff;
+  line-height:1.25;
+  margin-bottom:10px;
+  animation: fadeUp .8s ease .2s both;
+}
+
+.cover-h1 em {
+  font-style:normal;
+  color:var(--gold-lt);
+}
+
+.cover-sub {
+  font-size:1.05rem;
+  color:rgba(255,255,255,.65);
+  font-weight:300;
+  margin-bottom:48px;
+  animation: fadeUp .8s ease .3s both;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* meta strip */
+.cover-meta {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:rgba(184,148,60,.2);
+  border:1px solid rgba(184,148,60,.2);
+  border-radius:8px;
+  overflow:hidden;
+  animation: fadeUp .8s ease .4s both;
+}
+
+.meta-cell {
+  background:rgba(255,255,255,.04);
+  padding:18px 20px;
+  backdrop-filter:blur(6px);
+  transition:background .25s;
+}
+.meta-cell:hover { background:rgba(184,148,60,.1); }
+
+.meta-lbl {
+  font-size:.64rem;
+  color:var(--gold);
+  letter-spacing:.14em;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+.meta-val {
+  font-size:.84rem;
+  color:#fff;
+  font-weight:600;
+  line-height:1.4;
+}
+
+/* bottom band */
+.cover-bottom {
+  padding:24px 60px 36px;
+  border-top:1px solid rgba(184,148,60,.15);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.cover-team {
+  font-size:.78rem;
+  color:rgba(255,255,255,.5);
+}
+.cover-team strong { color:var(--gold-lt); }
+
+.cover-scroll {
+  font-size:.72rem;
+  color:rgba(255,255,255,.3);
+  letter-spacing:.1em;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.scroll-line {
+  width:40px; height:1px;
+  background:linear-gradient(90deg,rgba(184,148,60,.6),transparent);
+}
+
+/* ─── STICKY NAV ─── */
+.sticky-nav {
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(31,58,39,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:2px solid var(--gold);
+  display:flex;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.sticky-nav::-webkit-scrollbar { display:none; }
+
+.nav-item {
+  white-space:nowrap;
+  padding:14px 22px;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.05em;
+  color:var(--mist);
+  cursor:pointer;
+  text-decoration:none;
+  border-bottom:2px solid transparent;
+  margin-bottom:-2px;
+  transition:all .2s;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.nav-item:hover, .nav-item.active {
+  color:var(--gold-lt);
+  border-bottom-color:var(--gold);
+}
+
+/* ─── LAYOUT ─── */
+.page {
+  max-width:1000px;
+  margin:0 auto;
+  padding:70px 48px;
+}
+
+/* section heading */
+.sec-head {
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  margin-bottom:40px;
+}
+
+.sec-roman {
+  font-family:'Playfair Display', serif;
+  font-size:3.5rem;
+  font-weight:400;
+  font-style:italic;
+  color:var(--mist);
+  line-height:1;
+  flex-shrink:0;
+  margin-top:-8px;
+}
+
+.sec-text h2 {
+  font-family:'Noto Serif KR', serif;
+  font-size:1.6rem;
+  font-weight:800;
+  color:var(--forest);
+  line-height:1.3;
+}
+.sec-text p {
+  font-size:.84rem;
+  color:var(--sage);
+  margin-top:4px;
+}
+
+.rule { height:1px; background:var(--rule); margin-bottom:40px; }
+
+/* ─── CARDS ─── */
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+
+.card {
+  background:#fff;
+  border-radius:10px;
+  padding:28px 24px;
+  box-shadow:0 2px 14px rgba(26,62,39,.07);
+  border-top:3px solid var(--sage);
+  transition:transform .2s, box-shadow .2s;
+}
+.card:hover {
+  transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(26,62,39,.12);
+}
+.card-icon { font-size:1.9rem; margin-bottom:12px; }
+.card h3 {
+  font-family:'Noto Serif KR', serif;
+  font-size:.95rem;
+  font-weight:700;
+  color:var(--forest);
+  margin-bottom:8px;
+}
+.card p { font-size:.83rem; color:var(--gray); line-height:1.75; }
+
+/* ─── TABLE ─── */
+.tbl {
+  width:100%;
+  border-collapse:collapse;
+  font-size:.85rem;
+}
+.tbl th {
+  background:var(--forest);
+  color:var(--gold-lt);
+  padding:13px 16px;
+  text-align:left;
+  font-weight:600;
+  letter-spacing:.04em;
+}
+.tbl th:first-child { border-radius:6px 0 0 0; }
+.tbl th:last-child  { border-radius:0 6px 0 0; }
+.tbl td {
+  padding:13px 16px;
+  border-bottom:1px solid #ece7dc;
+  vertical-align:top;
+  line-height:1.7;
+}
+.tbl tr:nth-child(even) td { background:rgba(180,205,184,.07); }
+.tbl tr:hover td { background:rgba(74,124,90,.06); }
+
+/* tags */
+.tag {
+  display:inline-block;
+  padding:3px 10px;
+  border-radius:20px;
+  font-size:.7rem;
+  font-weight:700;
+  white-space:nowrap;
+}
+.t-neuro  { background:#ede8f6; color:#5b30a0; }
+.t-nature { background:#e8f4ea; color:#1e6b35; }
+.t-cult   { background:#f4eddf; color:#7a4a10; }
+.t-sleep  { background:#e0ecf8; color:#1a4a8a; }
+
+/* ─── INVEST ─── */
+.invest-box {
+  background:#fff;
+  border-radius:12px;
+  padding:32px;
+  box-shadow:0 2px 14px rgba(0,0,0,.06);
+}
+.invest-box h4 {
+  font-family:'Noto Serif KR', serif;
+  font-size:1rem;
+  color:var(--forest);
+  margin-bottom:18px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--rule);
+}
+.inv-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px dashed #e8e0d0;
+  font-size:.87rem;
+}
+.inv-row:last-child {
+  border-bottom:none;
+  margin-top:6px;
+  font-weight:800;
+  font-size:.95rem;
+  color:var(--forest);
+}
+.inv-amt { font-weight:700; color:var(--earth); }
+.inv-row:last-child .inv-amt { color:var(--forest); }
+.inv-note {
+  font-size:.72rem;
+  color:var(--sage);
+  margin-left:8px;
+  font-weight:400;
+}
+
+/* total highlight */
+.total-bar {
+  background:linear-gradient(90deg, var(--forest), var(--moss));
+  color:#fff;
+  border-radius:8px;
+  padding:18px 24px;
+  margin-top:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.total-bar .lbl { font-size:.85rem; color:var(--mist); }
+.total-bar .amt {
+  font-family:'Playfair Display', serif;
+  font-size:1.8rem;
+  color:var(--gold-lt);
+}
+.total-bar .unit { font-size:.9rem; }
+
+/* ─── HIGHLIGHT BOX ─── */
+.hl-box {
+  background:linear-gradient(135deg, var(--forest) 0%, var(--moss) 100%);
+  border-radius:14px;
+  padding:40px;
+  color:#fff;
+  margin:36px 0;
+  position:relative;
+  overflow:hidden;
+}
+.hl-box::after {
+  content:'腦波';
+  position:absolute;
+  right:24px; bottom:-16px;
+  font-family:'Noto Serif KR', serif;
+  font-size:8rem;
+  color:rgba(255,255,255,.04);
+  line-height:1;
+}
+.hl-box h3 {
+  font-family:'Noto Serif KR', serif;
+  font-size:1.25rem;
+  color:var(--gold-lt);
+  margin-bottom:14px;
+}
+.hl-box p { font-size:.88rem; color:rgba(255,255,255,.85); line-height:1.95; }
+
+.stat-trio {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:24px;
+}
+.stat-cell {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(184,148,60,.3);
+  border-radius:8px;
+  padding:18px;
+  text-align:center;
+}
+.stat-big {
+  font-family:'Playfair Display', serif;
+  font-size:1.8rem;
+  font-style:italic;
+  color:var(--gold-lt);
+  display:block;
+  margin-bottom:4px;
+}
+.stat-lbl { font-size:.74rem; color:var(--mist); line-height:1.6; }
+
+/* ─── LAW BOX ─── */
+.law-box {
+  background:#fff;
+  border-left:5px solid var(--sage);
+  border-radius:0 10px 10px 0;
+  padding:24px 28px;
+  margin-bottom:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.law-tag {
+  display:inline-block;
+  background:#e8f4ea;
+  color:var(--moss);
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:.07em;
+  padding:3px 10px;
+  border-radius:4px;
+  margin-bottom:10px;
+}
+.law-box h4 {
+  font-family:'Noto Serif KR', serif;
+  color:var(--forest);
+  font-size:.95rem;
+  margin-bottom:8px;
+}
+.law-box p { font-size:.85rem; color:#374151; line-height:1.85; }
+
+/* ─── ROADMAP ─── */
+.roadmap {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  position:relative;
+  margin-top:8px;
+}
+.roadmap::before {
+  content:'';
+  position:absolute;
+  top:38px;
+  left:12%;
+  right:12%;
+  height:2px;
+  background:linear-gradient(90deg, var(--mist), var(--sage), var(--gold));
+  z-index:0;
+}
+.rm-step { text-align:center; position:relative; z-index:1; }
+.rm-circle {
+  width:76px; height:76px;
+  border-radius:50%;
+  background:#fff;
+  border:3px solid var(--sage);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.5rem;
+  margin:0 auto 14px;
+  box-shadow:0 4px 14px rgba(26,58,39,.13);
+}
+.rm-step.star .rm-circle {
+  background:var(--forest);
+  border-color:var(--gold);
+  font-size:.78rem;
+  color:var(--gold-lt);
+  font-weight:800;
+  line-height:1.2;
+}
+.rm-period { font-size:.68rem; color:var(--gold); font-weight:700; letter-spacing:.1em; margin-bottom:5px; }
+.rm-title  { font-family:'Noto Serif KR',serif; font-size:.82rem; font-weight:700; color:var(--forest); margin-bottom:5px; }
+.rm-desc   { font-size:.74rem; color:var(--gray); line-height:1.6; }
+
+/* ─── TEAM BOX ─── */
+.team-box {
+  background:linear-gradient(120deg,#eef4ef 0%,#f8f5ec 100%);
+  border:1px solid var(--rule);
+  border-radius:14px;
+  padding:36px 40px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:32px;
+  align-items:start;
+}
+.team-seal {
+  width:80px; height:80px;
+  border-radius:50%;
+  background:var(--forest);
+  color:var(--gold-lt);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  flex-shrink:0;
+  box-shadow:0 4px 18px rgba(31,58,39,.25);
+}
+.team-info h3 {
+  font-family:'Noto Serif KR',serif;
+  font-size:1.1rem;
+  font-weight:800;
+  color:var(--forest);
+  margin-bottom:4px;
+}
+.team-info .team-en {
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:.85rem;
+  color:var(--sage);
+  margin-bottom:14px;
+}
+.team-members {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.tm {
+  background:#fff;
+  border-radius:8px;
+  padding:12px 14px;
+  border-left:3px solid var(--sage);
+  font-size:.8rem;
+}
+.tm strong { display:block; color:var(--forest); font-weight:700; margin-bottom:2px; }
+.tm span { color:var(--gray); font-size:.74rem; }
+
+/* ─── EFFECT GRID ─── */
+.effect-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.eff-card {
+  background:#fff;
+  border-radius:10px;
+  padding:24px 20px;
+  text-align:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  transition:transform .2s;
+}
+.eff-card:hover { transform:translateY(-3px); }
+.eff-icon { font-size:2rem; margin-bottom:10px; }
+.eff-card h4 {
+  font-family:'Noto Serif KR',serif;
+  font-size:.9rem;
+  font-weight:700;
+  color:var(--forest);
+  margin-bottom:8px;
+}
+.eff-card p { font-size:.78rem; color:var(--gray); line-height:1.7; }
+
+/* ─── ALT BACKGROUND ─── */
+.bg-alt { background:rgba(180,205,184,.08); }
+
+/* ─── FOOTER ─── */
+.footer {
+  background:var(--forest);
+  color:var(--mist);
+  padding:30px 48px;
+  font-size:.78rem;
+  line-height:1.9;
+}
+.footer strong { color:var(--gold-lt); }
+
+/* ─── PRINT / TOC ANCHOR ─── */
+.anchor { display:block; margin-top:-70px; padding-top:70px; }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:800px) {
+  .cover-h1 { font-size:2.2rem; }
+  .cover-top, .cover-bottom { padding:28px 24px 0; }
+  .cover-main { padding:40px 24px 24px; }
+  .cover-meta { grid-template-columns:1fr 1fr; }
+  .page { padding:48px 20px; }
+  .grid-3, .effect-grid { grid-template-columns:1fr 1fr; }
+  .roadmap { grid-template-columns:1fr 1fr; }
+  .roadmap::before { display:none; }
+  .team-box { grid-template-columns:1fr; }
+  .team-members { grid-template-columns:1fr 1fr; }
+  .stat-trio { grid-template-columns:1fr; }
+}
+@media(max-width:500px) {
+  .grid-3, .grid-2, .effect-grid, .roadmap, .cover-meta { grid-template-columns:1fr; }
+  .team-members { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="cover">
+  <div class="cover-inner">
+
+    <div class="cover-top">
+      <div class="cover-knu">
+        <strong>국립공주대학교 스마트의료웰니스관광 대학원</strong>
+        K-MediWell Research Group · 자연치유관광 포럼<br>
+        Korea National University of Gongju · Graduate School of Smart Medical Wellness Tourism
+      </div>
+      <div class="cover-doc-id">
+        문서번호 KMW-2026-001<br>
+        작성일 2026. 5. 기준
+      </div>
+    </div>
+
+    <div class="cover-main">
+      <div class="cover-badge">★ BUSINESS PLAN · 치유관광시설업 등록 신청</div>
+      <div class="cover-title-jp">Hills Forêt Healing Tourism Facility</div>
+      <h1 class="cover-h1">힐스포레<br><em>치유관광시설업</em><br>사업계획서</h1>
+      <p class="cover-sub">뇌파(EEG) 기반 명상 치유 × 맨발걷기 × 관광펜션 —<br>치유관광산업 육성에 관한 법률 <strong style="color:var(--gold-lt)">전국 제1호</strong> 지정시설을 향한 도전</p>
+
+      <div class="cover-meta">
+        <div class="meta-cell">
+          <div class="meta-lbl">시설명</div>
+          <div class="meta-val">힐스포레 (Hills Forêt)</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-lbl">소재지</div>
+          <div class="meta-val">충청남도 공주시</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-lbl">법적 근거</div>
+          <div class="meta-val">치유관광산업 육성에 관한 법률<br>(2026.4.9 시행)</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-lbl">신청 목표</div>
+          <div class="meta-val">치유관광시설업<br>전국 제1호 지정</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="cover-team">
+        작성 책임자 <strong>이용근 교수</strong> (국립공주대학교 스마트의료웰니스관광 대학원) &nbsp;|&nbsp;
+        K-MediWell 프로젝트팀
+      </div>
+      <div class="cover-scroll">
+        <span class="scroll-line"></span>
+        SCROLL TO READ
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════ STICKY NAV ══════════════ -->
+<nav class="sticky-nav">
+  <a class="nav-item active" href="#sec-team">👤 작성팀</a>
+  <a class="nav-item" href="#sec-overview">Ⅰ 사업 개요</a>
+  <a class="nav-item" href="#sec-legal">Ⅱ 법적 근거</a>
+  <a class="nav-item" href="#sec-eeg">Ⅲ EEG 치유 과학</a>
+  <a class="nav-item" href="#sec-program">Ⅳ 치유 프로그램</a>
+  <a class="nav-item" href="#sec-facility">Ⅴ 시설 구성</a>
+  <a class="nav-item" href="#sec-invest">Ⅵ 투자·수익</a>
+  <a class="nav-item" href="#sec-roadmap">Ⅶ 로드맵</a>
+  <a class="nav-item" href="#sec-effect">Ⅷ 기대 효과</a>
+</nav>
+
+<!-- ══════════════ SECTION: 작성 팀 ══════════════ -->
+<span class="anchor" id="sec-team"></span>
+<section class="page">
+  <div class="sec-head">
+    <div class="sec-roman">✦</div>
+    <div class="sec-text">
+      <h2>사업계획서 작성팀 — K-MediWell 프로젝트팀</h2>
+      <p>Prepared by K-MediWell Project Team, Kongju National University</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="team-box">
+    <div class="team-seal">🎓</div>
+    <div class="team-info">
+      <h3>국립공주대학교 스마트의료웰니스관광 대학원 K-MediWell 연구그룹</h3>
+      <div class="team-en">K-MediWell Research Group · Graduate School of Smart Medical Wellness Tourism · Kongju National University</div>
+      <p style="font-size:.84rem; color:var(--gray); line-height:1.85;">
+        본 사업계획서는 국립공주대학교 스마트의료웰니스관광 대학원 K-MediWell 연구그룹 및 자연치유관광 포럼이 작성하였다.
+        K-MediWell 프로젝트팀은 치유관광 융합 모델(K-MediWell ↔ K-WellMedi)을 연구·실증하며,
+        힐스포레가 <strong>치유관광산업 육성에 관한 법률 상 전국 최초 치유관광시설업 등록 시설</strong>이 될 수 있도록
+        학술적·실무적 지원을 담당하고 있다.
+      </p>
+
+      <div class="team-members">
+        <div class="tm">
+          <strong>이용근 교수 (책임)</strong>
+          <span>스마트의료웰니스관광 대학원<br>K-MediWell 연구그룹 대표</span>
+        </div>
+        <div class="tm">
+          <strong>K-MediWell 연구팀</strong>
+          <span>치유관광 프로그램 개발<br>EEG 뇌파 분석 연구</span>
+        </div>
+        <div class="tm">
+          <strong>자연치유관광 포럼</strong>
+          <span>현장 자문 및 검증<br>산업계 네트워크 연계</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ Ⅰ 사업 개요 ══════════════ -->
+<span class="anchor" id="sec-overview"></span>
+<section class="page bg-alt">
+  <div class="sec-head">
+    <div class="sec-roman">Ⅰ</div>
+    <div class="sec-text">
+      <h2>사업 개요 및 핵심 비전</h2>
+      <p>Business Overview & Strategic Vision</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-icon">🏡</div>
+      <h3>관광펜션업 전환</h3>
+      <p>기존 펜션업(힐스포레)을 관광진흥법상 <strong>관광펜션업</strong>으로 전환 등록하여 법적 지위를 강화하고, 치유관광시설업 이중 등록의 기반을 마련한다.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <h3>EEG 뇌파 기반 치유</h3>
+      <p>뇌파 측정기(EEG)로 입·퇴소 시 알파파·세타파·스트레스 지수를 정량 측정하여 치유 효과를 <strong>과학적으로 실증</strong>하는 차별화 서비스.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🦶</div>
+      <h3>맨발걷기 자연 치유</h3>
+      <p>황토·자갈·잔디 맨발 치유로를 기반으로 접지(Earthing) 이론과 발 반사구 자극을 결합한 <strong>자연 치유 프로그램</strong> 운영.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📜</div>
+      <h3>전국 제1호 타이틀</h3>
+      <p>치유관광산업 육성에 관한 법률(2026.4.9 시행) 원년에 <strong>전국 최초</strong> 치유관광시설업 등록을 완료하여 K-치유관광 선도 모델로 자리매김.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎓</div>
+      <h3>공주대 산학 연계</h3>
+      <p>K-MediWell 연구그룹의 학술적 지원 아래 EEG 데이터를 축적하고 치유 효과를 검증. 대학원생 현장 실습 기관으로서 연구 기반 확보.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌏</div>
+      <h3>K-MediWell 실증 거점</h3>
+      <p>공주 백제 역사·금강 자연과 연계한 K-MediWell 융합 모델의 국내 최초 실증 거점으로서 글로벌 치유관광 콘텐츠 수출 플랫폼 역할 수행.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ Ⅱ 법적 근거 ══════════════ -->
+<span class="anchor" id="sec-legal"></span>
+<section class="page">
+  <div class="sec-head">
+    <div class="sec-roman">Ⅱ</div>
+    <div class="sec-text">
+      <h2>법적 근거 및 등록 전략</h2>
+      <p>Legal Basis & Registration Strategy</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="law-box">
+    <div class="law-tag">치유관광산업 육성에 관한 법률 (법률 제20920호, 2025.4.8 공포, 2026.4.9 시행)</div>
+    <h4>✦ 치유관광시설업 신설 — 등록제(임의)</h4>
+    <p>동 법률은 <strong>치유관광시설업</strong>을 신설하여 숙박·명상·수련·자연체험 등 치유 프로그램을 운영하는 관광시설의 등록 근거를 마련하였다. 등록은 의무가 아닌 임의(재량) 방식이며, 등록 사업자는 문화체육관광부 및 지방자치단체의 행정적·재정적 지원 대상이 된다. 특히 요가·명상 수련 프로그램, 자연체험·힐링 프로그램을 운영하는 관광숙박시설이 치유관광시설에 포함될 것으로 시행령·시행규칙에서 명시될 예정이다.</p>
+  </div>
+
+  <div class="law-box">
+    <div class="law-tag">관광진흥법 시행령 — 관광펜션업 전환 근거</div>
+    <h4>✦ 관광펜션업 등록 기준 충족 전략</h4>
+    <p>힐스포레는 기존 펜션업에서 <strong>관광진흥법상 관광펜션업</strong>으로 전환 등록한다. 관광펜션업은 자연환경·문화 체험 프로그램 운영을 전제로 하며, 법정 시설 기준(객실 수, 공용 편의시설, 부대시설)을 충족해야 한다. 기존 시설 리모델링으로 기준을 충족할 수 있도록 설비 개선 계획을 수립하였다.</p>
+  </div>
+
+  <div class="law-box">
+    <div class="law-tag">전략 포인트 — 법 시행 원년 최초 등록의 이점</div>
+    <h4>✦ 선점 전략: 전국 제1호 등록의 가치</h4>
+    <p>치유관광산업 육성법은 2026년 4월 9일부터 시행되었다. 전국 최초 등록 시설은 ① 문화체육관광부 및 충청남도의 <strong>홍보 우선 지원</strong>, ② 제1차 5개년 기본계획(2027~2031) 거점 시설 포함, ③ 언론·미디어의 집중 취재로 인한 자연스러운 브랜드 홍보, ④ 국내외 치유관광 사업자와의 벤치마킹 네트워크 형성 등 복합적 혜택을 선점할 수 있다.</p>
+  </div>
+</section>
+
+<!-- ══════════════ Ⅲ EEG 치유 과학 ══════════════ -->
+<span class="anchor" id="sec-eeg"></span>
+<section class="page bg-alt">
+  <div class="sec-head">
+    <div class="sec-roman">Ⅲ</div>
+    <div class="sec-text">
+      <h2>EEG 뇌파 기반 치유의 과학적 근거</h2>
+      <p>Neuroscientific Foundation of EEG-Based Healing</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="hl-box">
+    <h3>🔬 K-MediWell 뇌에너지 치유 이론의 실증</h3>
+    <p>
+      Christopher Palmer 박사(하버드의대, 2022, <em>Brain Energy</em>)의 뇌에너지 이론에 따르면, 만성 스트레스는 뇌의 미토콘드리아 기능 저하를 통해 정신적·신체적 질환으로 이어진다.
+      힐스포레의 EEG 기반 치유 서비스는 <strong>뇌파 데이터의 정량적 측정</strong>을 통해 명상·자연 치유 전·후의 뇌 상태 변화를 실증한다.
+      K-MediWell 연구그룹은 이 데이터를 학술 연구에 활용하여 한국형 치유관광의 과학적 효과를 국내외에 입증할 계획이다.
+    </p>
+    <div class="stat-trio">
+      <div class="stat-cell">
+        <span class="stat-big">α파</span>
+        <div class="stat-lbl">명상 시 알파파(8~12Hz) 증진<br>이완·스트레스 완화 핵심 지표</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-big">θ파</span>
+        <div class="stat-lbl">세타파(4~8Hz) 유도<br>깊은 이완·창의력·수면 전환기</div>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-big">β/α</span>
+        <div class="stat-lbl">스트레스 지수 (β/α 비율)<br>입·퇴소 전후 정량 비교 제공</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:0;">
+    <div class="law-box" style="margin-bottom:0;">
+      <div class="law-tag">EEG 측정 프로토콜</div>
+      <h4>✦ 입소 전 — 기초 뇌파 측정 (30분)</h4>
+      <p>입소 당일 EEG 장비로 기초 뇌파 데이터를 수집한다. 측정 항목: 알파파 지수, 세타파 지수, 좌우 뇌반구 균형(Coherence), 자기조절 지수, 스트레스 지수(β/α), 집중력 지수. 측정 결과는 개인 치유 설계 기초 자료로 활용된다.</p>
+    </div>
+    <div class="law-box" style="margin-bottom:0;">
+      <div class="law-tag">EEG 측정 프로토콜</div>
+      <h4>✦ 퇴소 시 — 사후 뇌파 측정 & 보고서 (30분)</h4>
+      <p>프로그램 종료 후 동일 조건 EEG 재측정. 입소 전 데이터와 비교 분석하여 <strong>개인 맞춤형 치유 효과 보고서(PDF)</strong>를 발급한다. 이 데이터는 공주대 K-MediWell 연구그룹의 치유관광 효과 연구 DB에 익명으로 누적된다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ Ⅳ 치유 프로그램 ══════════════ -->
+<span class="anchor" id="sec-program"></span>
+<section class="page">
+  <div class="sec-head">
+    <div class="sec-roman">Ⅳ</div>
+    <div class="sec-text">
+      <h2>치유 프로그램 구성</h2>
+      <p>Healing Program Portfolio — 오정법(五正法) 기반 통합 치유 설계</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th style="width:10%">구분</th>
+        <th style="width:18%">프로그램명</th>
+        <th>세부 내용</th>
+        <th style="width:8%">시간</th>
+        <th style="width:12%">분류</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>입소 진단</strong></td>
+        <td>EEG 뇌파 초기 측정</td>
+        <td>뇌파 측정기로 기초 데이터 수집 (알파파·세타파·스트레스지수·좌우 뇌반구 균형 등). 개인 맞춤형 치유 프로그램 설계 기반 자료로 활용.</td>
+        <td>30분</td>
+        <td><span class="tag t-neuro">뉴로사이언스</span></td>
+      </tr>
+      <tr>
+        <td><strong>핵심①</strong></td>
+        <td>국악호흡명상<br>(정호흡)</td>
+        <td>오정법 중 <em>정호흡</em>. 국악 리듬의 장박·단박 구조를 활용한 호흡 패턴 조절. 알파파·세타파 유도 명상. 그룹·개인 1:1 맞춤 운영.</td>
+        <td>60분</td>
+        <td><span class="tag t-neuro">뇌파명상</span></td>
+      </tr>
+      <tr>
+        <td><strong>핵심②</strong></td>
+        <td>황토 맨발걷기<br>(정활동)</td>
+        <td>오정법 중 <em>정활동</em>. 황토·자갈·잔디 3코스 맨발 치유로 접지(Earthing) 이론 기반. 대지 음이온 흡수·발 반사구 자극. 금강 수변 자연환경 활용.</td>
+        <td>90분</td>
+        <td><span class="tag t-nature">자연치유</span></td>
+      </tr>
+      <tr>
+        <td><strong>핵심③</strong></td>
+        <td>FAWA 마음챙김<br>(정마음챙김)</td>
+        <td>오정법 중 <em>정마음챙김</em>. 호흡(Focused Awareness)→각성(Awakening)→걷기(Walking)→수용(Acceptance) 4단계 마음챙김 프로그램. 계룡산·금강 자연 속 진행.</td>
+        <td>60분</td>
+        <td><span class="tag t-neuro">뇌파명상</span></td>
+      </tr>
+      <tr>
+        <td><strong>심화①</strong></td>
+        <td>풍류도 자연 활동<br>(정활동 심화)</td>
+        <td>한국 전통 풍류(風流) 철학 기반 느린 자연 활동. 공주 공산성·마곡사 솔숲·금강 수변 역사 치유 루트 탐방. 감사 일기·자연 관찰 명상 병행.</td>
+        <td>반일</td>
+        <td><span class="tag t-cult">문화관광</span></td>
+      </tr>
+      <tr>
+        <td><strong>심화②</strong></td>
+        <td>정수면 프로그램</td>
+        <td>오정법 중 <em>정수면</em>. 수면 전 EEG 뇌파 유도 명상(세타파 타겟). 객실 환경 최적화(암막·편백 향기·자연 소리). 수면 질 향상 모닝 체크인 포함.</td>
+        <td>야간</td>
+        <td><span class="tag t-sleep">수면치유</span></td>
+      </tr>
+      <tr>
+        <td><strong>보완</strong></td>
+        <td>약선음식 치유식단<br>(정음식)</td>
+        <td>오정법 중 <em>정음식</em>. 공주 밤·연근·산야초·발효 장류를 활용한 약선 치유 식단. 로컬 푸드 기반 영양 균형 설계. 건강 요리 워크숍 체험 옵션.</td>
+        <td>매 식사</td>
+        <td><span class="tag t-cult">전통식문화</span></td>
+      </tr>
+      <tr>
+        <td><strong>퇴소 평가</strong></td>
+        <td>EEG 사후 측정<br>& 치유 리포트</td>
+        <td>재측정 후 입소 데이터와 비교 분석. 알파파 변화율·스트레스 지수 개선도·뇌반구 균형 변화를 시각화한 <strong>개인 치유 효과 보고서(PDF)</strong> 발급. 연구 목적 익명 데이터 수집.</td>
+        <td>30분</td>
+        <td><span class="tag t-neuro">뉴로사이언스</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════ Ⅴ 시설 구성 ══════════════ -->
+<span class="anchor" id="sec-facility"></span>
+<section class="page bg-alt">
+  <div class="sec-head">
+    <div class="sec-roman">Ⅴ</div>
+    <div class="sec-text">
+      <h2>시설 구성 계획 (기존 시설 리모델링 기반)</h2>
+      <p>Facility Configuration — Renovation of Existing Premises</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <p style="font-size:.87rem; color:var(--gray); margin-bottom:28px; background:#fff5e0; border-left:4px solid var(--gold); padding:14px 18px; border-radius:0 8px 8px 0;">
+    ※ 신축은 계획에 포함하지 않으며, 기존 힐스포레 펜션 시설의 <strong>리모델링 및 설비 도입</strong>을 중심으로 시설 계획을 수립하였습니다.
+  </p>
+
+  <div class="grid-3">
+    <div class="card" style="border-top-color:var(--gold);">
+      <div class="card-icon">🧘</div>
+      <h3>뇌파 명상 치유실</h3>
+      <p>기존 공용 공간 리모델링. EEG 측정 코너(2~4석), 방음·자연광 명상 공간 구성. 그룹 명상(최대 10인) 및 1:1 상담 겸용 운영.</p>
+    </div>
+    <div class="card" style="border-top-color:var(--gold);">
+      <div class="card-icon">🦶</div>
+      <h3>맨발 치유 황토로</h3>
+      <p>기존 정원·야외 공간 활용. 황토·자갈·잔디 3코스(총 300~500m) 맨발 치유로 조성. 발 세척 시설, 접지 패드 구역, 안내 사인 설치.</p>
+    </div>
+    <div class="card" style="border-top-color:var(--gold);">
+      <div class="card-icon">🏘️</div>
+      <h3>관광펜션 객실</h3>
+      <p>기존 펜션 객실을 관광펜션업 기준에 맞게 개보수. 전 객실 자연·삼림 조망 환경 강화. 정수면 프로그램 연계 편백·황토 요소 보강.</p>
+    </div>
+    <div class="card" style="border-top-color:var(--gold);">
+      <div class="card-icon">🌿</div>
+      <h3>치유 정원 & 약초원</h3>
+      <p>기존 정원 정비·확장. 계절별 야생화·약초 식재. 일출 명상 덱, 야간 달빛 명상 코너, 불멍 화로 쉼터를 자연친화적으로 구성.</p>
+    </div>
+    <div class="card" style="border-top-color:var(--gold);">
+      <div class="card-icon">🍽️</div>
+      <h3>약선 다이닝 공간</h3>
+      <p>기존 식당·주방 리모델링. 공주 로컬 식재료 기반 약선 식단 조리 환경 개선. 소규모 건강 요리 워크숍 운영 가능한 오픈 키친 구성.</p>
+    </div>
+    <div class="card" style="border-top-color:var(--gold);">
+      <div class="card-icon">💻</div>
+      <h3>EEG 데이터 관리 시스템</h3>
+      <p>뇌파 측정 데이터 저장·분석 소프트웨어 도입. 개인 치유 리포트 자동 생성 기능. 공주대 K-MediWell 연구 DB 연동 모듈 구축.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ Ⅵ 투자·수익 ══════════════ -->
+<span class="anchor" id="sec-invest"></span>
+<section class="page">
+  <div class="sec-head">
+    <div class="sec-roman">Ⅵ</div>
+    <div class="sec-text">
+      <h2>투자 및 수익 계획</h2>
+      <p>Investment & Revenue Plan — 리모델링 중심, 신축 제외</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="grid-2">
+
+    <!-- 투자 -->
+    <div class="invest-box">
+      <h4>💰 초기 투자 계획 <small style="font-weight:400;color:var(--gray)">(단위: 만원)</small></h4>
+
+      <div class="inv-row">
+        <span>관광펜션업 전환 시설 개보수<br><span class="inv-note">객실·공용 공간 법정 기준 충족</span></span>
+        <span class="inv-amt">4,000</span>
+      </div>
+      <div class="inv-row">
+        <span>뇌파 명상 치유실 내부 인테리어<br><span class="inv-note">기존 공간 리모델링</span></span>
+        <span class="inv-amt">2,500</span>
+      </div>
+      <div class="inv-row">
+        <span>EEG 뇌파 측정 장비 도입<br><span class="inv-note">다채널 뇌파 측정기 + 소프트웨어</span></span>
+        <span class="inv-amt">1,000</span>
+      </div>
+      <div class="inv-row">
+        <span>맨발 황토 치유로 조성<br><span class="inv-note">황토·자갈·잔디 3코스, 부대 시설</span></span>
+        <span class="inv-amt">1,500</span>
+      </div>
+      <div class="inv-row">
+        <span>치유 정원·약초원 조성<br><span class="inv-note">정원 정비, 야생화·약초 식재</span></span>
+        <span class="inv-amt">800</span>
+      </div>
+      <div class="inv-row">
+        <span>약선 다이닝 주방 개선<br><span class="inv-note">로컬 약선식단 조리 환경 구축</span></span>
+        <span class="inv-amt">500</span>
+      </div>
+      <div class="inv-row">
+        <span>EEG 데이터 관리 SW·서버<br><span class="inv-note">리포트 자동화·연구 DB 연동</span></span>
+        <span class="inv-amt">700</span>
+      </div>
+      <div class="inv-row">
+        <span>인허가·등록 행정 비용<br><span class="inv-note">관광펜션업 전환 + 치유관광시설업</span></span>
+        <span class="inv-amt">300</span>
+      </div>
+      <div class="inv-row">
+        <span>브랜딩·홍보·콘텐츠 제작</span>
+        <span class="inv-amt">700</span>
+      </div>
+      <div class="inv-row">
+        <span><strong>합계</strong></span>
+        <span class="inv-amt"><strong>12,000</strong></span>
+      </div>
+
+      <div class="total-bar">
+        <div>
+          <div class="lbl">총 초기 투자 금액</div>
+          <div style="font-size:.75rem; color:var(--mist); margin-top:2px;">신축 없이 리모델링 중심 최적화</div>
+        </div>
+        <div class="amt">1억 <span class="unit">2천만원</span></div>
+      </div>
+    </div>
+
+    <!-- 수익 -->
+    <div class="invest-box">
+      <h4>📈 연간 수익 계획 <small style="font-weight:400;color:var(--gray)">(단위: 만원)</small></h4>
+
+      <div class="inv-row">
+        <span>관광펜션 객실 숙박 수익<br><span class="inv-note">기존 객실 + 치유관광 프리미엄 객단가</span></span>
+        <span class="inv-amt">9,600</span>
+      </div>
+      <div class="inv-row">
+        <span>당일형 치유 체험 프로그램<br><span class="inv-note">EEG 측정 + 명상 + 맨발걷기 패키지</span></span>
+        <span class="inv-amt">3,600</span>
+      </div>
+      <div class="inv-row">
+        <span>1박2일·2박3일 치유 패키지<br><span class="inv-note">숙박 + 전일 프로그램 + 리포트</span></span>
+        <span class="inv-amt">7,200</span>
+      </div>
+      <div class="inv-row">
+        <span>기업 웰니스 연수 프로그램<br><span class="inv-note">10~30인 단체 / 기업 복지 연계</span></span>
+        <span class="inv-amt">3,000</span>
+      </div>
+      <div class="inv-row">
+        <span>공주대 대학원 현장 실습 수탁</span>
+        <span class="inv-amt">600</span>
+      </div>
+      <div class="inv-row">
+        <span>EEG 치유 리포트 추가 발급</span>
+        <span class="inv-amt">600</span>
+      </div>
+      <div class="inv-row">
+        <span>약선 식단·요리 워크숍</span>
+        <span class="inv-amt">400</span>
+      </div>
+      <div class="inv-row">
+        <span><strong>연간 총 수익 목표</strong></span>
+        <span class="inv-amt"><strong>25,000</strong></span>
+      </div>
+
+      <div class="total-bar">
+        <div>
+          <div class="lbl">연간 수익 목표 (안정화 기준)</div>
+          <div style="font-size:.75rem; color:var(--mist); margin-top:2px;">투자 회수 기간 예상 2~3년</div>
+        </div>
+        <div class="amt">2억 <span class="unit">5천만원</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ Ⅶ 로드맵 ══════════════ -->
+<span class="anchor" id="sec-roadmap"></span>
+<section class="page bg-alt">
+  <div class="sec-head">
+    <div class="sec-roman">Ⅶ</div>
+    <div class="sec-text">
+      <h2>추진 로드맵</h2>
+      <p>Implementation Roadmap — 2026~2027</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="roadmap">
+    <div class="rm-step">
+      <div class="rm-circle">📋</div>
+      <div class="rm-period">2026. 5~7월</div>
+      <div class="rm-title">행정 전환 준비</div>
+      <div class="rm-desc">관광펜션업 전환 서류 준비, 치유관광시설업 등록 신청 서류 완비, 공주시·충남도 협의</div>
+    </div>
+    <div class="rm-step">
+      <div class="rm-circle">🔧</div>
+      <div class="rm-period">2026. 6~9월</div>
+      <div class="rm-title">시설 리모델링</div>
+      <div class="rm-desc">뇌파 명상 치유실 개조, 황토 맨발길 조성, 치유 정원 정비, EEG 장비 도입·테스트</div>
+    </div>
+    <div class="rm-step star">
+      <div class="rm-circle">전국<br>제1호</div>
+      <div class="rm-period">2026. 하반기</div>
+      <div class="rm-title">치유관광시설업 제1호</div>
+      <div class="rm-desc">전국 최초 등록 완료, 문체부·충남도 현판식, 공주대 K-MediWell 연구 개시</div>
+    </div>
+    <div class="rm-step">
+      <div class="rm-circle">🌏</div>
+      <div class="rm-period">2027년~</div>
+      <div class="rm-title">글로벌 확장</div>
+      <div class="rm-desc">K-MediWell 모델 수출, 일본·동남아 치유관광객 유치, 국제 학술 논문 발표</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ Ⅷ 기대 효과 ══════════════ -->
+<span class="anchor" id="sec-effect"></span>
+<section class="page">
+  <div class="sec-head">
+    <div class="sec-roman">Ⅷ</div>
+    <div class="sec-text">
+      <h2>기대 효과 및 사회적 가치</h2>
+      <p>Expected Impact & Social Value</p>
+    </div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="effect-grid">
+    <div class="eff-card">
+      <div class="eff-icon">🇰🇷</div>
+      <h4>K-치유관광 선도 모델</h4>
+      <p>법률 시행 원년 전국 제1호 등록으로 K-MediWell 모델을 실증하는 기준점 시설로서 전국 치유관광 사업자의 벤치마킹 대상이 된다.</p>
+    </div>
+    <div class="eff-card">
+      <div class="eff-icon">📊</div>
+      <h4>치유 효과 DB 구축</h4>
+      <p>EEG 뇌파 데이터 누적을 통한 치유 효과 실증 데이터베이스 구축. 공주대 K-MediWell 연구그룹과 공동 SCI 논문 발표 목표.</p>
+    </div>
+    <div class="eff-card">
+      <div class="eff-icon">🏘️</div>
+      <h4>공주 지역경제 활성화</h4>
+      <p>백제 문화유산 + 치유관광 융합으로 체류형 관광객 증가. 공주 로컬 농산물 소비 확대, 치유관광 분야 지역 고용 창출.</p>
+    </div>
+    <div class="eff-card">
+      <div class="eff-icon">✈️</div>
+      <h4>인바운드 관광 증대</h4>
+      <p>일본·중국·동남아 웰니스 관광객 대상 한국형 뇌파 치유 체험 콘텐츠 개발. K-MediWell 브랜드의 글로벌 외화 획득 기여.</p>
+    </div>
+    <div class="eff-card">
+      <div class="eff-icon">🎓</div>
+      <h4>산학 연구 현장 거점</h4>
+      <p>공주대 스마트의료웰니스관광 대학원 현장 실습 기관 지정. 치유관광 전문 인력 양성 및 K-MediWell 연구 실증 공간 제공.</p>
+    </div>
+    <div class="eff-card">
+      <div class="eff-icon">💚</div>
+      <h4>국민 정신건강 기여</h4>
+      <p>번아웃·만성 스트레스 사회 문제에 EEG 기반 자연 치유 솔루션으로 대응. 국민 삶의 질 향상과 정신건강 회복에 실질적으로 기여.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer">
+  <div style="max-width:1000px; margin:0 auto; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+    <div>
+      <strong>힐스포레(Hills Forêt)</strong> · 충청남도 공주시<br>
+      치유관광산업 육성에 관한 법률 (법률 제20920호, 2026.4.9 시행) 근거<br>
+      치유관광시설업 전국 제1호 등록 추진
+    </div>
+    <div style="text-align:right;">
+      <strong>작성 책임</strong> 이용근 교수 (국립공주대학교 스마트의료웰니스관광 대학원)<br>
+      K-MediWell Research Group · 자연치유관광 포럼<br>
+      문서번호 KMW-2026-001
+    </div>
+  </div>
+</footer>
+
+<script>
+// Sticky nav active state on scroll
+const sections = document.querySelectorAll('.anchor');
+const navItems = document.querySelectorAll('.nav-item');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
